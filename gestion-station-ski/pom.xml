@@ -13,6 +13,19 @@
 	<version>1.0</version>
 	<name>gestion-station-ski</name>
 	<description>Demo project for Spring Boot</description>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.179.157:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>deploymentRepo</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://192.168.179.157:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -80,7 +93,15 @@
 		</dependency>
 
 		<!-- Spring Boot Testing -->
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -112,11 +133,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>4.0.0.4121</version>
-			</plugin>
 
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -138,5 +154,6 @@
 				</executions>
 			</plugin>
 		</plugins>
+
 	</build>
 </project>
