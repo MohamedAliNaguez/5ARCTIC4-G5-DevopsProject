@@ -12,7 +12,6 @@ import tn.esprit.spring.repositories.ISubscriptionRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -71,15 +70,11 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
     }
 
    // @Scheduled(cron = "* 0 9 1 * *") /* Cron expression to run a job every month at 9am */
-   @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 seconds */
-   public void showMonthlyRecurringRevenue() {
-       Float monthlyRevenue = Optional.ofNullable(subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY)).orElse(0f);
-       Float semestrielRevenue = Optional.ofNullable(subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL)).orElse(0f) / 6;
-       Float annualRevenue = Optional.ofNullable(subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL)).orElse(0f) / 12;
-
-       Float totalRevenue = monthlyRevenue + semestrielRevenue + annualRevenue;
-
-       log.info("Monthly Revenue = " + totalRevenue);
-   }
-
+    @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 secondes */
+    public void showMonthlyRecurringRevenue() {
+        Float revenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY)
+                + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL)/6
+                + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL)/12;
+        log.info("Monthly Revenue = " + revenue);
+    }
 }
