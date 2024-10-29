@@ -20,6 +20,20 @@ spec:
           ports:
             - containerPort: 8089
 
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-storage
+          emptyDir: {}  # For production, use a persistent volume instead of emptyDir
+
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +44,6 @@ spec:
     app: stationski
   ports:
     - protocol: TCP
-      port: 80         # Port accessible from outside
-      targetPort: 8089   # Port on the container
-  type: LoadBalancer   # Exposes the Service to the internet
+      port: 80
+      targetPort: 8089
+  type: LoadBalancer
