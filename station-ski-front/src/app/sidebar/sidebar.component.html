@@ -1,7 +1,7 @@
 <aside
   class="sidebar bg-gray-200 h-screen transition-all duration-300 ease-in-out"
   [ngClass]="{
-    'w-16 hover:w-4': true,
+    'w-16 hover:w-64': true,
     'p-2': !isHovered,
     'p-4': isHovered
   }"
@@ -16,7 +16,7 @@
       </a>
     </li>
     <li routerLinkActive="active">
-      <a routerLink="/users" class="text-gray-700 hover:text-gray-900">
+      <a routerLink="/skiers" class="text-gray-700 hover:text-gray-900">
         <i class="fa-solid fa-person-skiing"></i>
         <span *ngIf="isHovered" class="ml-2"> Skier </span>
       </a>

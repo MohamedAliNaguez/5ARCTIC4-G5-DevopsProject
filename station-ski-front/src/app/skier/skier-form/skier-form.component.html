@@ -1,0 +1,21 @@
+<h2>{{ isEditMode ? "Edit" : "Add" }} Skier</h2>
+<form (ngSubmit)="saveSkier()">
+  <label>First Name:</label>
+  <input type="text" [(ngModel)]="skier.firstName" name="firstName" required />
+
+  <label>Last Name:</label>
+  <input type="text" [(ngModel)]="skier.lastName" name="lastName" required />
+
+  <label>Date of Birth:</label>
+  <input
+    type="date"
+    [(ngModel)]="skier.dateOfBirth"
+    name="dateOfBirth"
+    required
+  />
+
+  <label>City:</label>
+  <input type="text" [(ngModel)]="skier.city" name="city" required />
+
+  <button type="submit">{{ isEditMode ? "Update" : "Add" }} Skier</button>
+</form>
