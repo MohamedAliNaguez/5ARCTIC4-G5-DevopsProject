@@ -6,14 +6,15 @@ import { SkierFormComponent } from './skier/skier-form/skier-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
   { path: 'skiers', component: SkierListComponent },
   { path: 'skiers/new', component: SkierFormComponent },
   { path: 'skiers/edit/:id', component: SkierFormComponent },
+  { path: 'home', component: DashboardComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

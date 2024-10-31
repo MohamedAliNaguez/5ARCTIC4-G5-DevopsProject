@@ -7,23 +7,23 @@ import { Skier } from '../model/skier'; // Your Skier model path
   providedIn: 'root',
 })
 export class SkierService {
-  private apiUrl = 'http://localhost:8080/api/skiers'; // Update with your backend URL
+  private apiUrl = 'http://localhost:8089/api/skier'; // Update with your backend URL
 
   constructor(private http: HttpClient) {}
 
   // Get all skiers
   getSkiers(): Observable<Skier[]> {
-    return this.http.get<Skier[]>(this.apiUrl);
+    return this.http.get<Skier[]>(this.apiUrl + '/all');
   }
 
   // Get a specific skier by ID
   getSkier(id: number): Observable<Skier> {
-    return this.http.get<Skier>(`${this.apiUrl}/${id}`);
+    return this.http.get<Skier>(`${this.apiUrl}/get/${id}`);
   }
 
   // Add a new skier
   addSkier(skier: Skier): Observable<Skier> {
-    return this.http.post<Skier>(this.apiUrl, skier);
+    return this.http.post<Skier>(this.apiUrl + '/add', skier);
   }
 
   // Update an existing skier
@@ -33,6 +33,6 @@ export class SkierService {
 
   // Delete a skier
   deleteSkier(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 }

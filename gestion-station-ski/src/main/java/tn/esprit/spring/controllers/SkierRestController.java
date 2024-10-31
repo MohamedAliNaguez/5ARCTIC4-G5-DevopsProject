@@ -12,6 +12,7 @@ import java.util.List;
 
 @Tag(name = "\uD83C\uDFC2 Skier Management")
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/skier")
 @RequiredArgsConstructor
 public class SkierRestController {
