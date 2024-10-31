@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class CourseServicesImplTest {
+ class CourseServicesImplTest {
 
     @Mock
     private ICourseRepository courseRepository;
@@ -31,7 +31,7 @@ public class CourseServicesImplTest {
     }
 
     @Test
-    public void testRetrieveAllCourses() {
+     void testRetrieveAllCourses() {
         Course course1 = new Course();
         course1.setNumCourse(1L);
         course1.setLevel(1);
@@ -57,7 +57,7 @@ public class CourseServicesImplTest {
     }
 
     @Test
-    public void testAddCourse() {
+     void testAddCourse() {
         Course course = new Course();
         course.setNumCourse(1L);
         course.setLevel(1);
@@ -76,7 +76,7 @@ public class CourseServicesImplTest {
     }
 
     @Test
-    public void testUpdateCourse() {
+     void testUpdateCourse() {
         Course course = new Course();
         course.setNumCourse(1L);
         course.setLevel(1);
@@ -95,7 +95,7 @@ public class CourseServicesImplTest {
     }
 
     @Test
-    public void testRetrieveCourse() {
+     void testRetrieveCourse() {
         Course course = new Course();
         course.setNumCourse(1L);
         course.setLevel(1);
