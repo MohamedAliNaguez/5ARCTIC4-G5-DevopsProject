@@ -1,5 +1,9 @@
 export interface Subscription {
-  // Define fields according to your Subscription entity
+  numSub: number;
+  startDate: string;
+  endDate: string;
+  price: number;
+  typeSub: string;
 }
 export interface Skier {
   numSkier: number;
