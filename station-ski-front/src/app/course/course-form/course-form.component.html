@@ -1,0 +1,57 @@
+<h2>{{ isEditMode ? "Edit" : "Add" }} Course</h2>
+<form (ngSubmit)="saveCourse()" class="max-w-md mx-auto">
+  <label class="block mb-2 text-sm font-medium text-gray-900">Level:</label>
+  <input
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    type="number"
+    [(ngModel)]="course.level"
+    name="level"
+    required
+  />
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Type Course:</label>
+  <select
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    [(ngModel)]="course.typeCourse"
+    name="typeCourse"
+    required
+  >
+    <option *ngFor="let type of typeCourses" [value]="type">{{ type }}</option>
+  </select>
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Support:</label>
+  <select
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    [(ngModel)]="course.support"
+    name="support"
+    required
+  >
+    <option *ngFor="let support of supports" [value]="support">{{ support }}</option>
+  </select>
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
+  <input
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    type="number"
+    [(ngModel)]="course.price"
+    name="price"
+    required
+  />
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Time Slot:</label>
+  <input
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    type="number"
+    [(ngModel)]="course.timeSlot"
+    name="timeSlot"
+    required
+  />
+
+  <button
+    type="submit"
+    class="text-white mt-2 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+  >
+    <i class="fa-solid fa-floppy-disk"></i>
+    {{ isEditMode ? "Update" : "Add" }} Course
+  </button>
+</form>

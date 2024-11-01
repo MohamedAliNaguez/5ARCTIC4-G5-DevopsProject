@@ -1,0 +1,49 @@
+.sidebar {
+  height: 100vh; /* Full height */
+  background-color: #343a40; /* Dark background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-right: 1px solid #000000; /* Blue border for separation */
+}
+
+.sidebar-header {
+  margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+  font-size: 20px;
+  margin: 0;
+  color: #007bff; /* Blue for the header */
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0; /* Space between menu items */
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s;
+  padding: 10px;
+  border-radius: 4px;
+  display: block; /* Makes the entire area clickable */
+}
+
+.sidebar-menu a:hover {
+  background-color: #495057; /* Light hover effect */
+}
+
+.sidebar-menu .active {
+  border-radius: 4px;
+  background-color: #35c7b3; /* Active link color */
+  color: white;
+}

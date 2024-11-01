@@ -1,0 +1,30 @@
+<div *ngIf="skier">
+  <h2>
+    <strong>Skier Details:</strong> {{ skier.firstName }} {{ skier.lastName }}
+  </h2>
+  <p><strong>Date of Birth:</strong> {{ skier.dateOfBirth }}</p>
+  <p><strong>City:</strong> {{ skier.city }}</p>
+
+  <div *ngIf="skier.subscription">
+    <h3>Subscription Details</h3>
+    <p><strong>Number:</strong> {{ skier.subscription.numSub }}</p>
+    <p><strong>Start Date:</strong> {{ skier.subscription.startDate }}</p>
+    <p><strong>End Date:</strong> {{ skier.subscription.endDate }}</p>
+    <p><strong>Price:</strong> {{ skier.subscription.price | currency }}</p>
+    <p><strong>Type:</strong> {{ skier.subscription.typeSub }}</p>
+  </div>
+
+  <div *ngIf="skier.pistes && skier.pistes.length">
+    <h3>Assigned Pistes</h3>
+    <ul>
+      <li *ngFor="let piste of skier.pistes">Piste ID: {{ piste }}</li>
+    </ul>
+  </div>
+
+  <button
+    routerLink="/skiers"
+    class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+  >
+    <i class="fa-solid fa-arrow-left"></i> Back to Skier List
+  </button>
+</div>

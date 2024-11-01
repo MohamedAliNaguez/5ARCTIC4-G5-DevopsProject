@@ -1,0 +1,40 @@
+<header
+  class="flex justify-between text-cyan-600 items-center px-8 py-2 shadow-md sticky top-0 bg-white relative"
+>
+  <!-- Falling Particles Container -->
+  <div class="particles absolute inset-0 pointer-events-none z-0">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Content of Header -->
+  <div class="logo z-10">
+    <h1 class="text-xl font-semibold">My Admin Dashboard</h1>
+  </div>
+  <div class="header-actions flex items-center z-10">
+    <div class="notification mr-4">
+      <i class="fas fa-bell"></i>
+    </div>
+    <div class="user-profile flex items-center" (click)="toggleDropdown()">
+      <img
+        src="../../assets/img/admin.png"
+        alt="User Avatar"
+        class="avatar rounded-full border border-cyan-800 w-10 h-10 mr-4"
+      />
+      <span class="username">{{ username }}</span>
+      <i class="fas fa-chevron-down"></i>
+      <div *ngIf="dropdownOpen" class="dropdown-menu">
+        <a routerLink="/profile">Profile</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
