@@ -32,6 +32,9 @@ public class CourseServicesImpl implements  ICourseServices{
     public Course retrieveCourse(Long numCourse) {
         return courseRepository.findById(numCourse).orElse(null);
     }
-
+    @Override
+    public void removeCourse(Long numCourse) {
+        courseRepository.deleteById(numCourse);
+    }
 
 }

@@ -9,6 +9,7 @@ import tn.esprit.spring.entities.TypeCourse;
 import tn.esprit.spring.services.ICourseServices;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @Tag(name = "\uD83D\uDCDA Course Management")
 @RestController
@@ -34,6 +35,11 @@ public class CourseRestController {
     @PutMapping("/update")
     public Course updateCourse(@RequestBody Course course){
         return  courseServices.updateCourse(course);
+    }
+    @Operation(description = "Delete Course by Id")
+    @DeleteMapping("/delete/{id-course}")
+    public void deleteById(@PathVariable("id-course") Long numCourse){
+        courseServices.removeCourse(numCourse);
     }
 
     @Operation(description = "Retrieve Course by Id")
