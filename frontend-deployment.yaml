@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: station-ski-frontend-deployment
+  labels:
+    app: station-ski-frontend
+spec:
+  replicas: 1 # Adjust based on your scaling needs
+  selector:
+    matchLabels:
+      app: station-ski-frontend
+  template:
+    metadata:
+      labels:
+        app: station-ski-frontend
+    spec:
+      containers:
+        - name: station-ski-frontend-container
+          image: youssefayed/angular-ski-app:latest # Use the pushed image
+          ports:
+            - containerPort: 80 # The port on which the container will listen
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: station-ski-frontend-service
+spec:
+  selector:
+    app: station-ski-frontend
+  ports:
+    - protocol: TCP
+      port: 80 # Service port accessible to users
+      targetPort: 80 # Port on the container
+  type: LoadBalancer # Expose the service with a LoadBalancer
