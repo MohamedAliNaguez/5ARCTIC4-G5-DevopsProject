@@ -18,7 +18,7 @@ services:
       retries: 5
 
   backend:
-    image: mohamedali1/naguezmohamedali-5arctic4-g5-gestion-station-ski:latest
+    image: mohamedali1/gestion-station-ski:latest
     container_name: station_ski_backend
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/stationSki?createDatabaseIfNotExist=true
@@ -34,7 +34,7 @@ services:
       - station-ski-network
 
   frontend:
-    image: mohamedali1/naguezmohamedali-5arctic4-g5-station-ski-front:latest
+    image: mohamedali1/station-ski-front:latest
     container_name: station_ski_frontend
     depends_on:
       - backend
