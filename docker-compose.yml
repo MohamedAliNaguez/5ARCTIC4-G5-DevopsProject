@@ -1,32 +1,42 @@
 version: '3.8'
-services:
-  web:
-    image: gestion-station-ski:latest
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/stationSki
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    networks:
-      - app-network
 
+services:
   db:
-    image: mysql:latest
+    image: mysql:8.0
+    container_name: station_ski_db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: stationSki
     ports:
       - "3306:3306"
-    volumes:
-      - db-data:/var/lib/mysql
     networks:
-      - app-network
+      - station-ski-network
 
-volumes:
-  db-data:
+  backend:
+    image: mohamedali1/gestion-station-ski-backend:latest
+    container_name: station_ski_backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/stationSki?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SERVER_PORT=8089
+    depends_on:
+      - db
+    ports:
+      - "8089:8089"
+    networks:
+      - station-ski-network
+
+  frontend:
+    image: mohamedali1/gestion-station-ski-frontend:latest
+    container_name: station_ski_frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - station-ski-network
 
 networks:
-  app-network:
+  station-ski-network:
+    driver: bridge
