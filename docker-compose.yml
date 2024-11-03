@@ -34,7 +34,7 @@ services:
       - station-ski-network
 
   frontend:
-    image: mohamedali1/station-ski-front:latest
+    image: mohamedali1/station-ski-frontend:latest
     container_name: station_ski_frontend
     depends_on:
       - backend
