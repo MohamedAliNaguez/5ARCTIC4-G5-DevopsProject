@@ -11,6 +11,11 @@ services:
       - "3306:3306"
     networks:
       - station-ski-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     image: mohamedali1/gestion-station-ski-backend:latest
@@ -21,7 +26,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - SERVER_PORT=8089
     depends_on:
-      - db
+      db:
+        condition: service_healthy  # Ensure the db service is healthy before starting
     ports:
       - "8089:8089"
     networks:
