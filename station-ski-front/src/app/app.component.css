@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.layout {
+  display: flex;
+}
+
+.content {
+  flex: 1; /* Take the remaining space */
+  padding: 20px; /* Some padding for content */
+}

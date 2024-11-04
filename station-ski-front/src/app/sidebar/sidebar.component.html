@@ -9,8 +9,8 @@
   (mouseleave)="isHovered = false"
 >
   <ul class="sidebar-menu space-y-2">
-    <li routerLinkActive="active">
-      <a routerLink="/" class="text-gray-700 hover:text-gray-900">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="/home" class="text-gray-700 hover:text-gray-900">
         <i class="fa-solid fa-house"></i>
         <span *ngIf="isHovered" class="ml-2"> Dashboard </span>
       </a>

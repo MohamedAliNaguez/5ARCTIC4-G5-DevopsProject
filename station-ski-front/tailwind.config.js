@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  optimizeCss: false, 
+  optimizeCss: false,
   enableBabelRuntime: true,
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'], 
-  content: ["./src/**/*.{html,ts,css}"],
+  content: [
+    "./src/**/*.{html,ts,css}",
+    "./src/**/**/*.{html,ts,css}",
+    "./src/*.{html,ts,css}",
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
-  important: '#app',
+  important: "#app",
 };
