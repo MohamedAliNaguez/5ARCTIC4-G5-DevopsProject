@@ -36,7 +36,8 @@ EXPOSE 8089
 CMD ["java", "-jar", "/app.jar"]
 
 # Frontend Image Stage
-FROM nginx:alpine AS frontend-final # Updated to a supported version of Alpine
+FROM nginx:alpine AS frontend-final
+# Updated to a supported version of Alpine
 COPY --from=frontend-build /app/dist/station-ski-front /usr/share/nginx/html
 
 # Expose the frontend port
