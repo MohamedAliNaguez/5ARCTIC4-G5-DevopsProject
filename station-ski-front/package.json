@@ -22,6 +22,7 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "autoprefixer": "^10.4.20",
+    "ng-process-env": "^16.0.6",
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1",
     "rxjs": "~7.8.0",

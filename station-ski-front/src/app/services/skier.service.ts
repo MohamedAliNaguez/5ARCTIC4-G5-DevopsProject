@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Skier } from '../model/skier';
-import { environment } from 'src/environments/environment';
-
+import { environment } from 'src/environments/environment.onprem';
 @Injectable({
   providedIn: 'root',
 })
 export class SkierService {
-  private apiUrl = environment.apiUrl + "/api";
+  private apiUrl = environment.apiUrl + '/api/skier';
 
   constructor(private http: HttpClient) {}
 
   // Get all skiers
-  getSkiers(): Observable<Skier[]> {
+  getSkiers(): Observable<Skier[]> {    
     return this.http.get<Skier[]>(this.apiUrl + '/all');
   }
 

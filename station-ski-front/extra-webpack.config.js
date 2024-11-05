@@ -5,6 +5,8 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
   //defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 });
 const webpack = require("webpack");
+require("dotenv").config({ path: __dirname + "/.env" });
+console.log("Loaded API_URL from .env:", process.env.API_URL);
 
 module.exports = (config, options) => {
   console.log(`Using '${config.mode}' mode`);
@@ -28,14 +30,12 @@ module.exports = (config, options) => {
     ],
   });
 
-  // Add DefinePlugin for environment variables
+  //Add DefinePlugin for environment variables
   config.plugins.push(
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify(
-        process.env.API_URL || "http://localhost:8089"
-      ),
+      "process.env.API_URL": JSON.stringify("http://test-url.com"),
     })
   );
-
+  console.log("Loaded API_URL from .env:", process.env.API_URL);
   return config;
 };
